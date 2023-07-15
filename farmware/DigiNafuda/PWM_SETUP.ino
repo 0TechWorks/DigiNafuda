@@ -5,7 +5,7 @@ ledc_timer_bit_t bit_num = (ledc_timer_bit_t) 4; // duty range = 2^4 = 16
    periph_module_enable(PERIPH_LEDC_MODULE);
 
    // Set Duty
-   int duty = 6;  // 6/16 = 37.5% 20mA
+   int duty = 4;  // 4/16 = 25% 15mA
 
 
    // setup the timer

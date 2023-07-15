@@ -41,7 +41,7 @@
 #include "esp_system.h"
 #include "driver/ledc.h"
 
-int i =6;
+int i =4;
 int pic_num=0;
 char i_char[10];
 
@@ -50,7 +50,7 @@ char i_char[10];
 class LGFX : public lgfx::LGFX_Device
 {
 
-lgfx::Panel_ST7789      _panel_instance;。
+lgfx::Panel_ST7789      _panel_instance;
 lgfx::Bus_SPI        _bus_instance;
 
 public:
@@ -169,13 +169,13 @@ lcd.init();
 //lcd.qrcode("Hello world !", 0, 0, 240,15);
 //lcd.display();
 
-SPIFFS.begin();
-lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);
-SPIFFS.end();
+//SPIFFS.begin();
+//lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);
+//SPIFFS.end();
 
-//SD.begin(7);
-//lcd.drawPngFile(SD, "/sd_icon.png", 0, 0);
-//SD.end();
+SD.begin(7);
+lcd.drawPngFile(SD, "/icon.png", 0, 0);
+SD.end();
 
 attachInterrupt(2, INTIO2, FALLING);
 attachInterrupt(3, INTIO3, FALLING);
@@ -189,8 +189,8 @@ setting_Light_Sleep();
 uint32_t count = ~0;
 void loop(void)
 {
-draw_pic_spiffs();
-//draw_pic_sd();
+//draw_pic_spiffs();
+draw_pic_sd();
 }
 
 
