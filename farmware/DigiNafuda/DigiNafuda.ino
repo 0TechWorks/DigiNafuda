@@ -152,16 +152,7 @@ set_LCD_Light();
    pinMode(20, INPUT_PULLUP);
    pinMode(21, INPUT_PULLUP);
 
-display.setTextSize(3);
-display.drawString("SW1 ICON", 20, 20);
-display.drawString("SW2 QR", 20, 60);
-display.drawString("SW3 LIGHT+",20, 100);
-display.drawString("SW4 LIGHT-", 20, 140);
-
-if(SD.begin(7)){display.drawString("SD-OK", 20, 180);}
-SD.end();
-
-delay(100);
+//DiginafudaStart();
 
 display.setTextColor(TFT_WHITE);
 lcd.init();
@@ -169,13 +160,13 @@ lcd.init();
 //lcd.qrcode("Hello world !", 0, 0, 240,15);
 //lcd.display();
 
-//SPIFFS.begin();
-//lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);
-//SPIFFS.end();
+SPIFFS.begin();
+lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);　　
+SPIFFS.end();
 
-SD.begin(7);
-lcd.drawPngFile(SD, "/icon.png", 0, 0);
-SD.end();
+//SD.begin(7);
+//lcd.drawPngFile(SD, "/icon.png", 0, 0);
+//SD.end();
 
 attachInterrupt(2, INTIO2, FALLING);
 attachInterrupt(3, INTIO3, FALLING);
@@ -189,8 +180,8 @@ setting_Light_Sleep();
 uint32_t count = ~0;
 void loop(void)
 {
-//draw_pic_spiffs();
-draw_pic_sd();
+draw_pic_spiffs();
+//draw_pic_sd();
 }
 
 
