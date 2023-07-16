@@ -155,7 +155,7 @@ set_LCD_Light();
    pinMode(20, INPUT_PULLUP);
    pinMode(21, INPUT_PULLUP);
 
-//DiginafudaStart();
+DiginafudaStart();
 
 display.setTextColor(TFT_WHITE);
 lcd.init();
@@ -167,9 +167,9 @@ SPIFFS.begin();
 lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);
 SPIFFS.end();
 
-//SD.begin(7);
-//lcd.drawPngFile(SD, "/icon.png", 0, 0);
-//SD.end();
+SD.begin(7);
+lcd.drawPngFile(SD, "/icon.png", 0, 0);
+SD.end();
 
 attachInterrupt(2, INTIO2, FALLING);
 attachInterrupt(3, INTIO3, FALLING);
