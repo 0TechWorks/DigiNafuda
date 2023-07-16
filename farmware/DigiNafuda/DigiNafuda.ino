@@ -41,9 +41,12 @@
 #include "esp_system.h"
 #include "driver/ledc.h"
 
+
+int duty = 4;  // 4/16 = 25% 15mA
+
 int i =4;
 int pic_num=0;
-char i_char[10];
+char duty_char[10];
 
 
 
@@ -161,7 +164,7 @@ lcd.init();
 //lcd.display();
 
 SPIFFS.begin();
-lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);　　
+lcd.drawPngFile(SPIFFS, "/icon.png", 0, 0);
 SPIFFS.end();
 
 //SD.begin(7);

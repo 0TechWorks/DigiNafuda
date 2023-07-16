@@ -5,7 +5,7 @@ ledc_timer_bit_t bit_num = (ledc_timer_bit_t) 4; // duty range = 2^4 = 16
    periph_module_enable(PERIPH_LEDC_MODULE);
 
    // Set Duty
-   int duty = 4;  // 4/16 = 25% 15mA
+   //int duty = 4;  // 4/16 = 25% 15mA
 
 
    // setup the timer
@@ -34,8 +34,8 @@ ledc_timer_bit_t bit_num = (ledc_timer_bit_t) 4; // duty range = 2^4 = 16
 
 void PWMdutyPlus(){
 display.fillScreen(TFT_WHITE);
-if(16>i){i=i+1;}
-ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, i);
+if(16>duty){duty=duty+1;}
+ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, duty);
 ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
 DispPWM();
 NoOPeration_Delay();
@@ -44,8 +44,8 @@ NoOPeration_Delay();
 void PWMdutyMinus(){
 
 display.fillScreen(TFT_WHITE);
-if(i>1){i=i-1;}
-ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, i);
+if(duty>1){duty=duty-1;}
+ledc_set_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0, duty);
 ledc_update_duty(LEDC_LOW_SPEED_MODE, LEDC_CHANNEL_0);
 DispPWM();
 NoOPeration_Delay();
@@ -57,8 +57,8 @@ NoOPeration_Delay();
 void DispPWM(){
 display.setTextColor(TFT_BLACK);
 display.setTextSize(5);
-sprintf(i_char, "%d", i);
-display.drawString(i_char, 100, 100);
+sprintf(duty_char, "%d",duty);
+display.drawString(duty_char, 100, 100);
 }
 
 void NoOPeration_Delay(){
